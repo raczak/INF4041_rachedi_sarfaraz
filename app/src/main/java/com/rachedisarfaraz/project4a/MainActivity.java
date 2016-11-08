@@ -1,11 +1,9 @@
 package com.rachedisarfaraz.project4a;
 
-import android.content.Context;
 import android.content.Intent;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
 import android.text.format.DateUtils;
-import android.view.Gravity;
 import android.view.Menu;
 import android.view.View;
 import android.widget.Button;
@@ -34,7 +32,7 @@ public class MainActivity extends AppCompatActivity {
             @Override
             public void onClick(View view) {
                 Toast.makeText(MainActivity.this, "Next activity", Toast.LENGTH_SHORT).show();
-                Intent nextAct =new Intent(MainActivity.this, Main2Activity.class);
+                Intent nextAct =new Intent(MainActivity.this, ListActivity.class);
                 startActivity(nextAct);
             }
         });
