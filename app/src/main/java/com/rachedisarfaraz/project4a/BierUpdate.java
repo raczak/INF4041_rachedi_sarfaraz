@@ -9,23 +9,26 @@ import android.support.v7.app.NotificationCompat;
 import android.util.Log;
 
 public class BierUpdate extends BroadcastReceiver {
-    public static final String BIERS_UPDATE = "com.rachedisarfaraz.project4a .BIERS_UPDATE";
-    final NotificationManager mNotification = (NotificationManager) getSystemService(NOTIFICATION_SERVICE);
+    public static final String BIERS_UPDATE = "com.rachedisarfaraz.project4a.BIERS_UPDATE";
+    final NotificationManager mNotification;
+    private final static int NOTIFICATION_ID = 001;
 
-    public BierUpdate() {
+    public BierUpdate(Context context) {
+        mNotification = (NotificationManager) context.getSystemService(context.NOTIFICATION_SERVICE);
     }
 
     @Override
     public void onReceive(Context context, Intent intent) {
         // TODO: This method is called when the BroadcastReceiver is receiving an Intent broadcast.
 
-        Intent resultIntent = new Intent(context, ListActivity.class);
+        Intent resultIntent = new Intent(context, MainActivity.class);
         PendingIntent resultPendingIntent =
             PendingIntent.getActivity(
                 context,
                 0,
                 resultIntent,
-                PendingIntent.FLAG_UPDATE_CURRENT
+                0 // TODO : Changer cette valeur à "FLAG_UPDATE_CURRENT" permet de décider de fermer
+                    // TODO :la notificaiton celon besoin
         );
 
 
@@ -34,8 +37,9 @@ public class BierUpdate extends BroadcastReceiver {
                         .setSmallIcon(R.drawable.ic_announcement)
                         .setContentTitle("My notification")
                         .setContentText("Hello World!")
+                        .setAutoCancel(true)
                         .setContentIntent(resultPendingIntent);
-        mNotification.notify(NOTIFICATION_ID, builder.build());
+        mNotification.notify(NOTIFICATION_ID, mBuilder.build());
 
         Log.d("OK Receiver", "Bieres Recu !");
 

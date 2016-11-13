@@ -22,7 +22,7 @@ public class ListActivity extends AppCompatActivity {
         setContentView(R.layout.activity_list);
 
         IntentFilter intentFilter = new IntentFilter(BierUpdate.BIERS_UPDATE);
-        LocalBroadcastManager.getInstance(this).registerReceiver(new BierUpdate(), intentFilter);
+        LocalBroadcastManager.getInstance(this).registerReceiver(new BierUpdate(this), intentFilter);
 
         MyIntentService2.startActionGetJson(this, "test", "tesst");
 
