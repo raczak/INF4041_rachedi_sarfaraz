@@ -18,17 +18,17 @@
         card_view:cardCornerRadius="2dp">
 
         <TextView
-            android:id="@+id/text"
-            android:text="@string/title"
+            android:id="@+id/rv_bier_element_name"
+            android:text="@string/rv_bier_element_name"
             android:layout_width="match_parent"
             android:layout_height="match_parent" />
 
-        <TextView
+        <!--<TextView
             android:id="@+id/text2"
             android:text="@string/app_name"
             android:layout_width="match_parent"
             android:layout_height="match_parent"
-            android:layout_below="@id/text"/>
+            android:layout_below="@id/text"/>-->
     </android.support.v7.widget.CardView>
 
 </LinearLayout>

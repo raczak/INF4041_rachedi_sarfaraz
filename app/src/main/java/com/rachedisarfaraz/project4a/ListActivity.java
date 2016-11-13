@@ -21,7 +21,6 @@ public class ListActivity extends AppCompatActivity {
     private RecyclerView.Adapter mAdapter;
     private RecyclerView.LayoutManager mLayoutManager;
     private ArrayList<MyNotification> mDataset = new ArrayList<MyNotification>();
-    private JSONArray bierstab;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -47,7 +46,7 @@ public class ListActivity extends AppCompatActivity {
             mDataset.add(notification);
         }
 
-        mAdapter = new BiersAdapter(this.mDataset);
+        mAdapter = new BiersAdapter(getBiersFromFile());
         mRecyclerView.setAdapter(mAdapter);
 
         /*getSupportFragmentManager()
