@@ -16,7 +16,7 @@
         android:layout_marginRight="7dp"
         card_view:cardElevation="2dp"
         card_view:cardCornerRadius="2dp">
-
+        
         <TextView
             android:id="@+id/rv_bier_element_name"
             android:text="@string/rv_bier_element_name"
