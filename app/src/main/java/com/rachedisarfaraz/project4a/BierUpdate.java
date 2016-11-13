@@ -27,18 +27,22 @@ public class BierUpdate extends BroadcastReceiver {
                 context,
                 0,
                 resultIntent,
-                0 // TODO : Changer cette valeur à "FLAG_UPDATE_CURRENT" permet de décider de fermer
-                    // TODO :la notificaiton celon besoin
+                0 // Todo : Changer cette valeur à "FLAG_UPDATE_CURRENT" permet de décider de fermer
+                    // Todo :la notificaiton celon besoin
         );
 
 
         NotificationCompat.Builder mBuilder =
                 (NotificationCompat.Builder) new NotificationCompat.Builder(context)
-                        .setSmallIcon(R.drawable.ic_announcement)
-                        .setContentTitle("My notification")
-                        .setContentText("Hello World!")
+                        .setSmallIcon(R.drawable.ic_action_coffee)
+                        .setContentTitle(context.getResources().getString(R.string.title_download_end))
+                        .setContentText(context.getResources().getString(R.string.content_download_end))
                         .setAutoCancel(true)
                         .setContentIntent(resultPendingIntent);
+
+        //Todo : Lecture du fichier json et extraction
+
+        //On execute la notification qu'après avoir charger le contenu du json
         mNotification.notify(NOTIFICATION_ID, mBuilder.build());
 
         Log.d("OK Receiver", "Bieres Recu !");

@@ -6,21 +6,19 @@ import android.view.View;
 import android.view.ViewGroup;
 import android.widget.TextView;
 
-import com.rachedisarfaraz.project4a.R;
-
 import java.util.ArrayList;
 
-class MyAdapter extends RecyclerView.Adapter<MyAdapter.ViewHolder> {
+class BiersAdapter extends RecyclerView.Adapter<BiersAdapter.ViewHolder> {
     private ArrayList <MyNotification> mDataset;
 
     // Provide a suitable constructor (depends on the kind of dataset)
-    public MyAdapter(ArrayList myDataset) {
+    public BiersAdapter(ArrayList myDataset) {
         mDataset = myDataset;
     }
 
     // Create new views (invoked by the layout manager)
     @Override
-    public MyAdapter.ViewHolder onCreateViewHolder(ViewGroup parent, int viewType) {
+    public BiersAdapter.ViewHolder onCreateViewHolder(ViewGroup parent, int viewType) {
         // create a new view
         View v = LayoutInflater.from(parent.getContext()).inflate(R.layout.item_recycler, parent, false);
         // set the view's size, margins, paddings and layout parameters

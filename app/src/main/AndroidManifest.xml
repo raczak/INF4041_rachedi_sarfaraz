@@ -25,7 +25,7 @@
         <activity android:name=".ListActivity" />
 
         <service
-            android:name=".MyIntentService2"
+            android:name=".MyIntentService"
             android:exported="false" />
 
         <receiver

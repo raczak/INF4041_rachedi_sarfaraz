@@ -5,4 +5,6 @@
     <string name="hello_blank_fragment">Hello blank fragment</string>
     <string name="title">Hello</string>
     <string name="button">Click</string>
+    <string name="title_download_end">Téléchargement du fichier</string>
+    <string name="content_download_end">Fin du téléchargement du fichier !</string>
 </resources>

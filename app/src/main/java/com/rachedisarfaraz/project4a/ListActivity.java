@@ -7,6 +7,12 @@ import android.os.Bundle;
 import android.support.v7.widget.LinearLayoutManager;
 import android.support.v7.widget.RecyclerView;
 
+import org.json.JSONArray;
+import org.json.JSONException;
+
+import java.io.FileInputStream;
+import java.io.IOException;
+import java.io.InputStream;
 import java.util.ArrayList;
 
 public class ListActivity extends AppCompatActivity {
@@ -15,6 +21,7 @@ public class ListActivity extends AppCompatActivity {
     private RecyclerView.Adapter mAdapter;
     private RecyclerView.LayoutManager mLayoutManager;
     private ArrayList<MyNotification> mDataset = new ArrayList<MyNotification>();
+    private JSONArray bierstab;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -24,7 +31,7 @@ public class ListActivity extends AppCompatActivity {
         IntentFilter intentFilter = new IntentFilter(BierUpdate.BIERS_UPDATE);
         LocalBroadcastManager.getInstance(this).registerReceiver(new BierUpdate(this), intentFilter);
 
-        MyIntentService2.startActionGetJson(this, "test", "tesst");
+        MyIntentService.startActionGetJson(this, "test", "tesst");
 
         //The recyclerView
         mRecyclerView = (RecyclerView) findViewById(R.id.my_recycler_view);
@@ -40,7 +47,7 @@ public class ListActivity extends AppCompatActivity {
             mDataset.add(notification);
         }
 
-        mAdapter = new MyAdapter(this.mDataset);
+        mAdapter = new BiersAdapter(this.mDataset);
         mRecyclerView.setAdapter(mAdapter);
 
         /*getSupportFragmentManager()
@@ -48,5 +55,21 @@ public class ListActivity extends AppCompatActivity {
                 .replace(R.id.list, new BlankFragment())
                 .commit()
         ;*/
+    }
+
+    public JSONArray getBiersFromFile() {
+        try {
+            InputStream is = new FileInputStream(getCacheDir() + "/" + "bieres.json");
+            byte[] buffer = new byte[is.available()];
+            is.read(buffer);
+            is.close();
+            return new JSONArray(new String(buffer, "UTF-8")); //construction du tableau
+        } catch (IOException e) {
+            e.printStackTrace();
+            return new JSONArray();
+        } catch (JSONException e) {
+            e.printStackTrace();
+            return new JSONArray();
+        }
     }
 }
