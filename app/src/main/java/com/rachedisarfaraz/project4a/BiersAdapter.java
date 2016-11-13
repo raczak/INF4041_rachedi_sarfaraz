@@ -1,5 +1,6 @@
 package com.rachedisarfaraz.project4a;
 
+import android.content.Context;
 import android.support.v7.widget.RecyclerView;
 import android.view.LayoutInflater;
 import android.view.View;
@@ -62,5 +63,10 @@ class BiersAdapter extends RecyclerView.Adapter<BiersAdapter.ViewHolder> {
     public int getItemCount() {
         return biers.length();
     }
+
+    /*public void setNewBiere (JSONArray biersUpdated) {
+        this.biers = biersUpdated;
+        notifyDataSetChanged();
+    }*/
 }
 
