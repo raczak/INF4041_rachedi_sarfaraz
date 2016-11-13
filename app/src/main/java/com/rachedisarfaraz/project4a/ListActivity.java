@@ -1,5 +1,7 @@
 package com.rachedisarfaraz.project4a;
 
+import android.content.IntentFilter;
+import android.support.v4.content.LocalBroadcastManager;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
 import android.support.v7.widget.LinearLayoutManager;
@@ -19,6 +21,11 @@ public class ListActivity extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_list);
 
+        IntentFilter intentFilter = new IntentFilter(BierUpdate.BIERS_UPDATE);
+        LocalBroadcastManager.getInstance(this).registerReceiver(new BierUpdate(), intentFilter);
+
+        MyIntentService2.startActionGetJson(this, "test", "tesst");
+
         //The recyclerView
         mRecyclerView = (RecyclerView) findViewById(R.id.my_recycler_view);
         //mRecyclerView.setHasFixedSize(true);
@@ -28,17 +35,10 @@ public class ListActivity extends AppCompatActivity {
         mRecyclerView.setLayoutManager(mLayoutManager);
 
         //The adapter to handle data and bind it
-        MyNotification notif = new MyNotification("test1", "test1bis");
-        MyNotification notif2 = new MyNotification("test2", "test2bis");
-        MyNotification notif3 = new MyNotification("test3", "test3bis");
-        MyNotification notif4 = new MyNotification("test4", "test4bis");
-        MyNotification notif5 = new MyNotification("test5", "test5bis");
-
-        mDataset.add(notif);
-        mDataset.add(notif2);
-        mDataset.add(notif3);
-        mDataset.add(notif4);
-        mDataset.add(notif5);
+        for (int i =0; i < 10; i++){
+            MyNotification notification = new MyNotification("Notificaiton n°"+i, "Lorem Ipsum"+i);
+            mDataset.add(notification);
+        }
 
         mAdapter = new MyAdapter(this.mDataset);
         mRecyclerView.setAdapter(mAdapter);
