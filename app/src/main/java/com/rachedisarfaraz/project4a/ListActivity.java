@@ -20,7 +20,6 @@ public class ListActivity extends AppCompatActivity {
     private RecyclerView mRecyclerView;
     private RecyclerView.Adapter mAdapter;
     private RecyclerView.LayoutManager mLayoutManager;
-    //private ArrayList<MyNotification> mDataset = new ArrayList<MyNotification>();
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -41,11 +40,6 @@ public class ListActivity extends AppCompatActivity {
         mRecyclerView.setLayoutManager(mLayoutManager);
 
         //The adapter to handle data and bind it
-        /*for (int i =0; i < 10; i++){
-            MyNotification notification = new MyNotification("Notificaiton n°"+i, "Lorem Ipsum"+i);
-            mDataset.add(notification);
-        }*/
-
         mAdapter = new BiersAdapter(getBiersFromFile());
         mRecyclerView.setAdapter(mAdapter);
 

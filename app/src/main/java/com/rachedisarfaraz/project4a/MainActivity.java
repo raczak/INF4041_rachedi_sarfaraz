@@ -1,6 +1,7 @@
 package com.rachedisarfaraz.project4a;
 
 import android.content.Intent;
+import android.support.design.widget.FloatingActionButton;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
 import android.text.format.DateUtils;
@@ -14,6 +15,7 @@ import java.text.DateFormat;
 import java.util.Date;
 
 public class MainActivity extends AppCompatActivity {
+    FloatingActionButton fabButton;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -21,6 +23,9 @@ public class MainActivity extends AppCompatActivity {
         setContentView(R.layout.activity_main);
 
         TextView tv_hw = (TextView) findViewById(R.id.tv_hello_word);
+
+        //Setup of Fab button
+        fabButton = (FloatingActionButton) findViewById(R.id.fab);
 
         String now = DateUtils.formatDateTime(getApplicationContext(), (new Date()).getTime(), DateFormat.FULL);
         tv_hw.setText(now);
@@ -34,6 +39,13 @@ public class MainActivity extends AppCompatActivity {
                 Toast.makeText(MainActivity.this, "Next activity", Toast.LENGTH_SHORT).show();
                 Intent nextAct =new Intent(MainActivity.this, ListActivity.class);
                 startActivity(nextAct);
+            }
+        });
+
+        fabButton.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                startActivity(new Intent(MainActivity.this, ListActivity.class));
             }
         });
     }
