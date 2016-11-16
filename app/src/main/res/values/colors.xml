@@ -1,7 +1,24 @@
 <?xml version="1.0" encoding="utf-8"?>
 <resources>
-    <color name="colorPrimary">#3F51B5</color>
-    <color name="colorPrimaryDark">#303F9F</color>
-    <color name="colorAccent">#FF4081</color>
+    <color name="colorPrimary">#f42960</color>
+    <color name="colorPrimaryDark">#b71e48</color>
+    <color name="colorAccent">#24D995</color>
+    <color name="navigationBarColor">#b71e48</color>
     <color name="colorWhite">#FFFFFF</color>
+    <color name="colorBackground">#d7d7d7</color>
+
+    <!-- Tabs dynamic color change -->
+    <color name="colorBlue">#40C4FF</color>
+    <color name="colorBlueDark">#0091EA</color>
+
+    <color name="colorYellow">#FDD835</color>
+    <color name="colorYellowDark">#F9A825</color>
+
+    <!-- Fab dynamic color change -->
+    <color name="colorNormal">@color/colorAccent</color>
+    <color name="colorRare">#FF982B</color>
+    <color name="colorLegendary">#5C3ADB</color>
+
+    <!-- Colors for cards in list card -->
+    <color name="colorHeaderCard">#f2f2f2</color>
 </resources>

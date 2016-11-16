@@ -16,6 +16,7 @@ public class BierUpdate extends BroadcastReceiver {
     private final static int NOTIFICATION_ID = 001;
     //private RecyclerView rc;
 
+
     public BierUpdate(Context context) {
         mNotification = (NotificationManager) context.getSystemService(context.NOTIFICATION_SERVICE);
     }
