@@ -30,7 +30,7 @@
             android:exported="false" />
 
         <receiver
-            android:name=".BierUpdate"
+            android:name=".PetUpdate"
             android:enabled="true"
             android:exported="true" />
     </application>

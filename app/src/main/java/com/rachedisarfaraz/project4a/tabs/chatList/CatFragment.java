@@ -1,25 +1,21 @@
 package com.rachedisarfaraz.project4a.tabs.chatList;
 
-import android.os.Bundle;
-import android.support.v4.app.Fragment;
-import android.view.LayoutInflater;
-import android.view.View;
-import android.view.ViewGroup;
-import com.rachedisarfaraz.project4a.R;
+import com.rachedisarfaraz.project4a.tabs.PetListFragment;
 
-public class CatFragment extends Fragment {
+import org.json.JSONArray;
+
+public class CatFragment extends PetListFragment {
+    JSONArray data;
 
     public CatFragment() {
-        // Required empty public constructor
+    }
+
+    public CatFragment(JSONArray data) {
+        this.data = data;
     }
 
     @Override
-    public void onCreate(Bundle savedInstanceState) {
-        super.onCreate(savedInstanceState);
-    }
-
-    @Override
-    public View onCreateView(LayoutInflater inflater, ViewGroup container, Bundle savedInstanceState) {
-        return inflater.inflate(R.layout.fragment_tab1, container, false);
+    public JSONArray getData() {
+        return data;
     }
 }

@@ -2,11 +2,13 @@ package com.rachedisarfaraz.project4a;
 
 import android.annotation.TargetApi;
 import android.content.Intent;
+import android.content.IntentFilter;
 import android.content.res.ColorStateList;
 import android.os.Build;
 import android.support.design.widget.FloatingActionButton;
 import android.support.design.widget.NavigationView;
 import android.support.design.widget.TabLayout;
+import android.support.v4.content.LocalBroadcastManager;
 import android.support.v4.view.ViewPager;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
@@ -23,6 +25,13 @@ import com.rachedisarfaraz.project4a.tabs.fishList.FishFragment;
 import com.rachedisarfaraz.project4a.tabs.chatList.CatFragment;
 import com.rachedisarfaraz.project4a.tabs.dogList.DogFragment;
 
+import org.json.JSONArray;
+import org.json.JSONException;
+
+import java.io.FileInputStream;
+import java.io.IOException;
+import java.io.InputStream;
+
 public class MainActivity extends AppCompatActivity implements
         NavigationView.OnNavigationItemSelectedListener {
     FloatingActionButton fabButton;
@@ -37,6 +46,12 @@ public class MainActivity extends AppCompatActivity implements
         super.onCreate(savedInstanceState);
         setContentView(R.layout.app_bar_main);
 
+        //Setup and config IntentService
+        IntentFilter intentFilter = new IntentFilter(PetUpdate.BIERS_UPDATE);
+        LocalBroadcastManager.getInstance(this).registerReceiver(new PetUpdate(this), intentFilter);
+
+        MyIntentService.startActionGetJson(this, "test", "tesst");
+
         toolbar = (Toolbar) findViewById(R.id.toolbar);
         setSupportActionBar(toolbar);
 
@@ -44,6 +59,7 @@ public class MainActivity extends AppCompatActivity implements
 
         //Setup of Fab button
         fabButton = (FloatingActionButton) findViewById(R.id.fab);
+        getSupportActionBar().setDisplayHomeAsUpEnabled(true);
 
         //String now = DateUtils.formatDateTime(getApplicationContext(), (new Date()).getTime(), DateFormat.FULL);
         //tv_hw.setText(now);
@@ -61,7 +77,6 @@ public class MainActivity extends AppCompatActivity implements
         }); */
 
         //setup of the tabLayout
-        getSupportActionBar().setDisplayHomeAsUpEnabled(true);
 
         //ImageView imageView = (ImageView) findViewById(R.id.post_author_photo);
         //Log.d(TAG, "poke Image : " + imageView);
@@ -131,7 +146,7 @@ public class MainActivity extends AppCompatActivity implements
 
     private void setupViewPager(ViewPager viewPager) {
         PagerAdapter adapter = new PagerAdapter(getSupportFragmentManager());
-        adapter.addFragment(new CatFragment(), "Chat");
+        adapter.addFragment(new CatFragment(getDataFromFile()), "Chat");
         adapter.addFragment(new DogFragment(), "Chien");
         adapter.addFragment(new FishFragment(), "Poisson");
         viewPager.setAdapter(adapter);
@@ -161,6 +176,22 @@ public class MainActivity extends AppCompatActivity implements
         msg.show();*/
         
         return true;
+    }
+
+    public JSONArray getDataFromFile() {
+        try {
+            InputStream is = new FileInputStream(getCacheDir() + "/" + "bieres.json");
+            byte[] buffer = new byte[is.available()];
+            is.read(buffer);
+            is.close();
+            return new JSONArray(new String(buffer, "UTF-8")); //construction du tableau
+        } catch (IOException e) {
+            e.printStackTrace();
+            return new JSONArray();
+        } catch (JSONException e) {
+            e.printStackTrace();
+            return new JSONArray();
+        }
     }
 
     @Override

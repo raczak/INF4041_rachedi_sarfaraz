@@ -13,7 +13,6 @@ import org.json.JSONException;
 import java.io.FileInputStream;
 import java.io.IOException;
 import java.io.InputStream;
-import java.util.ArrayList;
 
 public class ListActivity extends AppCompatActivity {
 
@@ -24,10 +23,10 @@ public class ListActivity extends AppCompatActivity {
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        setContentView(R.layout.activity_list);
+        setContentView(R.layout.fragment_all_pet);
 
-        IntentFilter intentFilter = new IntentFilter(BierUpdate.BIERS_UPDATE);
-        LocalBroadcastManager.getInstance(this).registerReceiver(new BierUpdate(this), intentFilter);
+        IntentFilter intentFilter = new IntentFilter(PetUpdate.BIERS_UPDATE);
+        LocalBroadcastManager.getInstance(this).registerReceiver(new PetUpdate(this), intentFilter);
 
         MyIntentService.startActionGetJson(this, "test", "tesst");
 
@@ -40,7 +39,7 @@ public class ListActivity extends AppCompatActivity {
         mRecyclerView.setLayoutManager(mLayoutManager);
 
         //The adapter to handle data and bind it
-        mAdapter = new BiersAdapter(getBiersFromFile());
+        mAdapter = new PetAdapter(getBiersFromFile());
         mRecyclerView.setAdapter(mAdapter);
 
         /*getSupportFragmentManager()

@@ -91,8 +91,8 @@ public class MyIntentService extends IntentService {
             e.printStackTrace();
         }
         //Intent broadcastIntent = new Intent();
-        //broadcastIntent.setAction(BierUpdate)
-        LocalBroadcastManager.getInstance(this).sendBroadcast(new Intent(BierUpdate.BIERS_UPDATE));
+        //broadcastIntent.setAction(PetUpdate)
+        LocalBroadcastManager.getInstance(this).sendBroadcast(new Intent(PetUpdate.BIERS_UPDATE));
         //throw new UnsupportedOperationException("Not yet implemented");
     }
 

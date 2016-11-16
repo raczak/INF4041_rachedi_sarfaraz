@@ -10,21 +10,21 @@ import android.support.v7.widget.RecyclerView;
 import android.util.Log;
 import android.widget.Adapter;
 
-public class BierUpdate extends BroadcastReceiver {
+public class PetUpdate extends BroadcastReceiver {
     public static final String BIERS_UPDATE = "com.rachedisarfaraz.project4a.BIERS_UPDATE";
     final NotificationManager mNotification;
     private final static int NOTIFICATION_ID = 001;
     //private RecyclerView rc;
 
 
-    public BierUpdate(Context context) {
+    public PetUpdate(Context context) {
         mNotification = (NotificationManager) context.getSystemService(context.NOTIFICATION_SERVICE);
     }
 
     @Override
     public void onReceive(Context context, Intent intent) {
         //On met à jour le tableau json
-        /*BiersAdapter adapter = (BiersAdapter) rc.getAdapter();
+        /*PetAdapter adapter = (PetAdapter) rc.getAdapter();
         ListActivity listActivity = (ListActivity) context;
         adapter.setNewBiere(listActivity.getBiersFromFile());*/
 
