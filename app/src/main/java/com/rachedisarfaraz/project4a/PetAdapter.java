@@ -10,11 +10,11 @@ import org.json.JSONArray;
 import org.json.JSONException;
 
 public class PetAdapter extends RecyclerView.Adapter<PetAdapter.ViewHolder> {
-    private JSONArray biers;
+    private JSONArray pets;
 
     // Provide a suitable constructor (depends on the kind of dataset)
-    public PetAdapter(JSONArray biers) {
-        this.biers = biers;
+    public PetAdapter(JSONArray pets) {
+        this.pets = pets;
     }
 
     // Create new views (invoked by the layout manager)
@@ -49,22 +49,22 @@ public class PetAdapter extends RecyclerView.Adapter<PetAdapter.ViewHolder> {
     public void onBindViewHolder(ViewHolder holder, int position) {
         // todo : On remplit les vues générées par le OnCreateViewHolder/ViewHolder
         try {
-            holder.petName.setText(biers.getJSONObject(position).getString("name"));
+            holder.petName.setText(pets.getJSONObject(position).getString("name"));
         } catch (JSONException e) {
             e.printStackTrace();
         }
-        //holder.mTextView2.setText(biers.get(position).text2);
+        //holder.mTextView2.setText(pets.get(position).text2);
 
     }
 
     // Return the size of your dataset (invoked by the layout manager)
     @Override
     public int getItemCount() {
-        return biers.length();
+        return pets.length();
     }
 
-    /*public void setNewBiere (JSONArray biersUpdated) {
-        this.biers = biersUpdated;
+    /*public void setNewPet (JSONArray petUpdated) {
+        this.biers = petUpdated;
         notifyDataSetChanged();
     }*/
 }

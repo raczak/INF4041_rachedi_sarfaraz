@@ -13,6 +13,7 @@ import android.support.v4.view.ViewPager;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
 import android.support.v7.widget.Toolbar;
+import android.util.Log;
 import android.view.Menu;
 import android.view.MenuItem;
 import android.view.View;
@@ -20,6 +21,8 @@ import android.view.Window;
 import android.view.WindowManager;
 import android.widget.TextView;
 
+import com.rachedisarfaraz.project4a.database.DAO.PetDAO;
+import com.rachedisarfaraz.project4a.database.models.Pet;
 import com.rachedisarfaraz.project4a.tabs.PagerAdapter;
 import com.rachedisarfaraz.project4a.tabs.fishList.FishFragment;
 import com.rachedisarfaraz.project4a.tabs.chatList.CatFragment;
@@ -31,6 +34,7 @@ import org.json.JSONException;
 import java.io.FileInputStream;
 import java.io.IOException;
 import java.io.InputStream;
+import java.util.ArrayList;
 
 public class MainActivity extends AppCompatActivity implements
         NavigationView.OnNavigationItemSelectedListener {
@@ -81,6 +85,12 @@ public class MainActivity extends AppCompatActivity implements
         //ImageView imageView = (ImageView) findViewById(R.id.post_author_photo);
         //Log.d(TAG, "poke Image : " + imageView);
         //imageView.setImageResource(R.drawable.p002);
+        PetDAO pet = new PetDAO(this);
+        pet.add(new Pet(33, "hmar", "23/11/2014"));
+        ArrayList<Pet> test = pet.select(33);
+        Pet toto = test.get(0);
+
+        Log.d("OK Receiver", toto.getName());
 
         viewPager = (ViewPager) findViewById(R.id.pager);
         setupViewPager(viewPager);
