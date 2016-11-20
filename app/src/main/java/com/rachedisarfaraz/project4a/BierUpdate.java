@@ -10,11 +10,18 @@ import android.support.v7.widget.RecyclerView;
 import android.util.Log;
 import android.widget.Adapter;
 
+
+/*
+* Class name : BierUpdate
+* Class of bieres of the project
+* Methods :
+* -BierUpdate : Constructor, notification system enabler.
+* -onReceive : Notifications settings on receiving data.
+*/
 public class BierUpdate extends BroadcastReceiver {
     public static final String BIERS_UPDATE = "com.rachedisarfaraz.project4a.BIERS_UPDATE";
     final NotificationManager mNotification;
     private final static int NOTIFICATION_ID = 001;
-    //private RecyclerView rc;
 
     public BierUpdate(Context context) {
         mNotification = (NotificationManager) context.getSystemService(context.NOTIFICATION_SERVICE);
@@ -22,19 +29,13 @@ public class BierUpdate extends BroadcastReceiver {
 
     @Override
     public void onReceive(Context context, Intent intent) {
-        //On met à jour le tableau json
-        /*BiersAdapter adapter = (BiersAdapter) rc.getAdapter();
-        ListActivity listActivity = (ListActivity) context;
-        adapter.setNewBiere(listActivity.getBiersFromFile());*/
-
         Intent resultIntent = new Intent(context, MainActivity.class);
         PendingIntent resultPendingIntent =
             PendingIntent.getActivity(
                 context,
                 0,
                 resultIntent,
-                0 // Changer cette valeur à "FLAG_UPDATE_CURRENT" permet de décider de fermer
-                    // la notificaiton celon besoin
+                0
         );
 
         NotificationCompat.Builder mBuilder =
@@ -45,7 +46,6 @@ public class BierUpdate extends BroadcastReceiver {
                         .setAutoCancel(true)
                         .setContentIntent(resultPendingIntent);
 
-        //On execute la notification qu'après avoir charger le contenu du json
         mNotification.notify(NOTIFICATION_ID, mBuilder.build());
 
         Log.d("OK Receiver", "Bieres Recu !");

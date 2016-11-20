@@ -1,14 +1,16 @@
 package com.rachedisarfaraz.project4a;
 
-/**
- * Created by zakariarachedi on 08/11/2016.
- */
+/*
+* Class name : MyNotification
+* Notification class of the project
+* Methods :
+* -MyNotification : Constructor, return text and text2.
+*/
 public class MyNotification {
     public String text;
     public String text2;
 
     public MyNotification () {
-
     }
 
     public MyNotification (String text, String text2) {

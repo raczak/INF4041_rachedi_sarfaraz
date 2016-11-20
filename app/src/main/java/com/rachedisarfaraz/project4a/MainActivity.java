@@ -5,6 +5,7 @@ import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
 import android.text.format.DateUtils;
 import android.view.Menu;
+import android.view.MenuItem;
 import android.view.View;
 import android.widget.Button;
 import android.widget.TextView;
@@ -13,6 +14,14 @@ import android.widget.Toast;
 import java.text.DateFormat;
 import java.util.Date;
 
+/*
+* Class name : MainActivity
+* Class of main activity of the project, activity_main.xml
+* Methods :
+* -onCreate : Define content view. Set components functions.
+* -OnCreateOptionsMenu : Define the main menu bye an inflater.
+* -OnOptionsItemSelected : Define menu components functions.
+*/
 public class MainActivity extends AppCompatActivity {
 
     @Override
@@ -41,26 +50,26 @@ public class MainActivity extends AppCompatActivity {
     public boolean onCreateOptionsMenu(Menu menu){
         getMenuInflater().inflate(R.menu.menu_main, menu);
 
-        /*String hist = null;
-
-        switch(id) {
-            case R.id.action_new :
-                hist = getResources().getString(R.string.toast_new);
-                break;
-            case R.id.action_edit :
-                hist = getResources().getString(R.string.toast_edit);
-                break;
-            case R.id.action_delete :
-                hist = getResources().getString(R.string.toast_delete);
-                break;
-            default:
-        }
-
-        Context context = getApplicationContext();
-        Toast msg = Toast.makeText(context, hist, Toast.LENGTH_LONG);
-        msg.setGravity(Gravity.CENTER, msg.getXOffset() / 2, msg.getYOffset() / 2);
-        msg.show();*/
-        
         return true;
     }
+    @Override
+    public boolean onOptionsItemSelected(MenuItem item)
+    {
+        switch (item.getItemId())
+        {
+            case R.id.action_new:
+                Toast.makeText(MainActivity.this, "Coming soon", Toast.LENGTH_SHORT).show();
+                return true;
+            case R.id.action_edit:
+                Toast.makeText(MainActivity.this, "Coming soon", Toast.LENGTH_SHORT).show();
+                return true;
+            case R.id.action_delete:
+                Toast.makeText(MainActivity.this, "Coming soon", Toast.LENGTH_SHORT).show();
+                return true;
+
+            default:
+                return super.onOptionsItemSelected(item);
+        }
+    }
+
 }
