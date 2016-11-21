@@ -2,26 +2,36 @@ package com.rachedisarfaraz.project4a.tabs.dogList;
 
 import android.os.Bundle;
 import android.support.v4.app.Fragment;
+import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 
+import com.rachedisarfaraz.project4a.MyIntentService;
 import com.rachedisarfaraz.project4a.R;
+import com.rachedisarfaraz.project4a.tabs.PetListFragment;
 
+import org.json.JSONArray;
 
-public class DogFragment extends Fragment {
+public class DogFragment extends PetListFragment {
+
+    JSONArray data;
 
     public DogFragment() {
-        // Required empty public constructor
+    }
+
+    public DogFragment(JSONArray data) {
+        this.data = data;
     }
 
     @Override
-    public void onCreate(Bundle savedInstanceState) {
-        super.onCreate(savedInstanceState);
+    public JSONArray getData() {
+        Log.d("Dog Fragment", "getData");
+        return data;
     }
 
     @Override
-    public View onCreateView(LayoutInflater inflater, ViewGroup container, Bundle savedInstanceState) {
-        return inflater.inflate(R.layout.fragment_tab2, container, false);
+    public void OnRefresh() {
+        //MyIntentService.startActionGetJson(getContext(), "http://pokeapi.co/api/v2/pokemon/?offset=20", "pokemon2.json");
     }
 }

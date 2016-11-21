@@ -4,10 +4,12 @@ import android.os.Bundle;
 import android.support.v4.app.Fragment;
 import android.support.v7.widget.LinearLayoutManager;
 import android.support.v7.widget.RecyclerView;
+import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 
+import com.rachedisarfaraz.project4a.OnRefreshListener;
 import com.rachedisarfaraz.project4a.PetAdapter;
 import com.rachedisarfaraz.project4a.R;
 //import com.rachedisarfaraz.project4a.models.Pet;
@@ -15,7 +17,7 @@ import com.rachedisarfaraz.project4a.R;
 import org.json.JSONArray;
 
 
-public abstract class PetListFragment extends Fragment {
+public abstract class PetListFragment extends Fragment implements OnRefreshListener{
 
     private static final String TAG = "CatFragment";
 
@@ -34,7 +36,7 @@ public abstract class PetListFragment extends Fragment {
         //The recyclerView
         mRecycler = (RecyclerView) rootView.findViewById(R.id.my_recycler_view);
         mRecycler.setHasFixedSize(true);
-
+        Log.d("PetList", "Doit s'afficher x3");
         return rootView;
     }
 

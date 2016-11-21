@@ -25,22 +25,22 @@ public class ListActivity extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.fragment_all_pet);
 
-        IntentFilter intentFilter = new IntentFilter(PetUpdate.BIERS_UPDATE);
-        LocalBroadcastManager.getInstance(this).registerReceiver(new PetUpdate(this), intentFilter);
+        //IntentFilter intentFilter = new IntentFilter(PetUpdate.PET_UPDATE);
+        //LocalBroadcastManager.getInstance(this).registerReceiver(new PetUpdate(this), intentFilter);
 
-        MyIntentService.startActionGetJson(this, "test", "tesst");
+        //MyIntentService.startActionGetJson(this, "test", "tesst");
 
         //The recyclerView
-        mRecyclerView = (RecyclerView) findViewById(R.id.my_recycler_view);
+       // mRecyclerView = (RecyclerView) findViewById(R.id.my_recycler_view);
         //mRecyclerView.setHasFixedSize(true);
 
         //The Layout Manager to handle the view
-        mLayoutManager = new LinearLayoutManager(this);
-        mRecyclerView.setLayoutManager(mLayoutManager);
+        //mLayoutManager = new LinearLayoutManager(this);
+        //mRecyclerView.setLayoutManager(mLayoutManager);
 
         //The adapter to handle data and bind it
-        mAdapter = new PetAdapter(getBiersFromFile());
-        mRecyclerView.setAdapter(mAdapter);
+        //mAdapter = new PetAdapter(getBiersFromFile());
+        //mRecyclerView.setAdapter(mAdapter);
 
         /*getSupportFragmentManager()
                 .beginTransaction()

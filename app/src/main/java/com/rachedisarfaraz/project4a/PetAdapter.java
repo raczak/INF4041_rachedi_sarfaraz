@@ -1,13 +1,21 @@
 package com.rachedisarfaraz.project4a;
 
 import android.support.v7.widget.RecyclerView;
+import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.TextView;
 
+import com.rachedisarfaraz.project4a.database.models.Pet;
+
 import org.json.JSONArray;
 import org.json.JSONException;
+import org.json.JSONObject;
+
+import java.io.FileInputStream;
+import java.io.IOException;
+import java.io.InputStream;
 
 public class PetAdapter extends RecyclerView.Adapter<PetAdapter.ViewHolder> {
     private JSONArray pets;
@@ -49,7 +57,11 @@ public class PetAdapter extends RecyclerView.Adapter<PetAdapter.ViewHolder> {
     public void onBindViewHolder(ViewHolder holder, int position) {
         // todo : On remplit les vues générées par le OnCreateViewHolder/ViewHolder
         try {
-            holder.petName.setText(pets.getJSONObject(position).getString("name"));
+            JSONObject tab = pets.getJSONObject(2);
+            String name = pets.getJSONObject(position).getString("name");
+            Log.d("TAG_test", tab.getString("name"));
+            Log.d("TAG_test", "Ca rentre");
+            holder.petName.setText(name);
         } catch (JSONException e) {
             e.printStackTrace();
         }
@@ -63,9 +75,27 @@ public class PetAdapter extends RecyclerView.Adapter<PetAdapter.ViewHolder> {
         return pets.length();
     }
 
-    /*public void setNewPet (JSONArray petUpdated) {
-        this.biers = petUpdated;
+    public void setNewPet () {
+
+        this.pets = petUpdated;
         notifyDataSetChanged();
-    }*/
+    }
+
+    public JSONArray getDataFromFile(String fileName) {
+        try {
+            InputStream is = new FileInputStream(getCacheDir() + "/" + fileName);
+            byte[] buffer = new byte[is.available()];
+            is.read(buffer);
+            is.close();
+            JSONObject obj = new JSONObject(new String(buffer, "UTF-8"));
+            return obj.getJSONArray("results"); //construction du tableau
+        } catch (IOException e) {
+            e.printStackTrace();
+            return new JSONArray();
+        } catch (JSONException e) {
+            e.printStackTrace();
+            return new JSONArray();
+        }
+    }
 }
 

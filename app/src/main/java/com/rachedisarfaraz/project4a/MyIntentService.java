@@ -32,8 +32,8 @@ public class MyIntentService extends IntentService {
     private String TAG = "ServiceIntent";
 
     // TODO: Rename parameters
-    private static final String EXTRA_PARAM1 = "com.rachedisarfaraz.project4a.extra.PARAM1";
-    private static final String EXTRA_PARAM2 = "com.rachedisarfaraz.project4a.extra.PARAM2";
+    private static final String EXTRA_TAB = "com.rachedisarfaraz.project4a.extra.PARAM1";
+    private static final String EXTRA_TAB2 = "com.rachedisarfaraz.project4a.extra.PARAM2";
 
     public MyIntentService() {
         super("MyIntentService");
@@ -49,20 +49,20 @@ public class MyIntentService extends IntentService {
     //Cette action est appelée d'abord par l'activité "ListActivity" pour construire l'intent
     //Contenant les paramètres et allant vers le IntentService. La particularité est que ceci
     // ce fait dans le futur service appelé plutot que directement dans l'activité
-    public static void startActionGetJson(Context context, String param1, String param2) {
+    public static void startActionGetJson(Context context, String url_tab, String fileName) {
         Intent intent = new Intent(context, MyIntentService.class);
         intent.setAction(getJson);
-        intent.putExtra(EXTRA_PARAM1, param1);
-        intent.putExtra(EXTRA_PARAM2, param2);
+        intent.putExtra(EXTRA_TAB, url_tab);
+        intent.putExtra(EXTRA_TAB2, fileName);
         context.startService(intent);
     }
 
     @Override
     protected void onHandleIntent(Intent intent) {
         if (intent != null) {
-            final String param1 = intent.getStringExtra(EXTRA_PARAM1);
-            final String param2 = intent.getStringExtra(EXTRA_PARAM2);
-            handleActionGetJson(param1, param2);
+            final String url_tab = intent.getStringExtra(EXTRA_TAB);
+            final String fileName = intent.getStringExtra(EXTRA_TAB2);
+            handleActionGetJson(url_tab, fileName);
         }
     }
 
@@ -70,19 +70,19 @@ public class MyIntentService extends IntentService {
      * Handle action Baz in the provided background thread with the provided
      * parameters.
      */
-    private void handleActionGetJson(String param1, String param2) {
+    private void handleActionGetJson(String url_tab, String fileName) {
         Log.d(TAG, "Service démarré !");
 
         URL url =null;
 
         try {
-            url = new URL("http://binouze.fabrigli.fr/bieres.json");
+            url = new URL(url_tab);
             HttpURLConnection conn = (HttpURLConnection) url.openConnection();
             conn.connect();
             if (HttpsURLConnection.HTTP_OK == conn.getResponseCode()){
                 copyInputStreamToFile(conn.getInputStream(),
-                        new File(getCacheDir(), "bieres.json"));
-                Log.d(TAG, "Bieres json downloaded !");
+                        new File(getCacheDir(), fileName));
+                Log.d(TAG, "Pokemon json downloaded !");
 
             }
         } catch (MalformedURLException e) {
@@ -92,7 +92,7 @@ public class MyIntentService extends IntentService {
         }
         //Intent broadcastIntent = new Intent();
         //broadcastIntent.setAction(PetUpdate)
-        LocalBroadcastManager.getInstance(this).sendBroadcast(new Intent(PetUpdate.BIERS_UPDATE));
+        LocalBroadcastManager.getInstance(this).sendBroadcast(new Intent(PetUpdate.PET_UPDATE));
         //throw new UnsupportedOperationException("Not yet implemented");
     }
 

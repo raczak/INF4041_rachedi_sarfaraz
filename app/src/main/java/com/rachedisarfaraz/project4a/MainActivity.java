@@ -8,6 +8,7 @@ import android.os.Build;
 import android.support.design.widget.FloatingActionButton;
 import android.support.design.widget.NavigationView;
 import android.support.design.widget.TabLayout;
+import android.support.v4.app.Fragment;
 import android.support.v4.content.LocalBroadcastManager;
 import android.support.v4.view.ViewPager;
 import android.support.v7.app.AppCompatActivity;
@@ -30,6 +31,7 @@ import com.rachedisarfaraz.project4a.tabs.dogList.DogFragment;
 
 import org.json.JSONArray;
 import org.json.JSONException;
+import org.json.JSONObject;
 
 import java.io.FileInputStream;
 import java.io.IOException;
@@ -45,16 +47,31 @@ public class MainActivity extends AppCompatActivity implements
     private TabLayout tabLayout;
     private ViewPager viewPager;
 
+    //Url APi
+    private String urlTab1 = "http://pokeapi.co/api/v2/pokemon/";
+    private String urlTab2 = "http://pokeapi.co/api/v2/pokemon/?offset=20";
+    private String urlTab3 = "http://pokeapi.co/api/v2/pokemon/?offset=100";
+    private CatFragment tab1;
+    private DogFragment tab2;
+    private FishFragment tab3;
+
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.app_bar_main);
 
-        //Setup and config IntentService
-        IntentFilter intentFilter = new IntentFilter(PetUpdate.BIERS_UPDATE);
-        LocalBroadcastManager.getInstance(this).registerReceiver(new PetUpdate(this), intentFilter);
+        //We load fragments
+        tab1 = new CatFragment(getDataFromFile("pokemon.json"));
+        tab2 = new DogFragment(getDataFromFile("pokemon2.json"));
+        tab3 = new FishFragment(getDataFromFile("pokemon3.json"));
 
-        MyIntentService.startActionGetJson(this, "test", "tesst");
+        //Setup and config IntentService
+        IntentFilter intentFilter = new IntentFilter(PetUpdate.PET_UPDATE);
+        LocalBroadcastManager.getInstance(this).registerReceiver(new PetUpdate(this, tab1, tab2, tab3), intentFilter);
+
+        MyIntentService.startActionGetJson(this, urlTab1, "pokemon.json");
+        MyIntentService.startActionGetJson(this, urlTab2, "pokemon2.json");
+        MyIntentService.startActionGetJson(this, urlTab3, "pokemon3.json");
 
         toolbar = (Toolbar) findViewById(R.id.toolbar);
         setSupportActionBar(toolbar);
@@ -85,12 +102,6 @@ public class MainActivity extends AppCompatActivity implements
         //ImageView imageView = (ImageView) findViewById(R.id.post_author_photo);
         //Log.d(TAG, "poke Image : " + imageView);
         //imageView.setImageResource(R.drawable.p002);
-        PetDAO pet = new PetDAO(this);
-        pet.add(new Pet(33, "hmar", "23/11/2014"));
-        ArrayList<Pet> test = pet.select(33);
-        Pet toto = test.get(0);
-
-        Log.d("OK Receiver", toto.getName());
 
         viewPager = (ViewPager) findViewById(R.id.pager);
         setupViewPager(viewPager);
@@ -156,9 +167,9 @@ public class MainActivity extends AppCompatActivity implements
 
     private void setupViewPager(ViewPager viewPager) {
         PagerAdapter adapter = new PagerAdapter(getSupportFragmentManager());
-        adapter.addFragment(new CatFragment(getDataFromFile()), "Chat");
-        adapter.addFragment(new DogFragment(), "Chien");
-        adapter.addFragment(new FishFragment(), "Poisson");
+        adapter.addFragment(tab1, "Gen 1");
+        adapter.addFragment(tab2, "Gen 2");
+        adapter.addFragment(tab3, "Gen 3");
         viewPager.setAdapter(adapter);
     }
 
@@ -188,13 +199,14 @@ public class MainActivity extends AppCompatActivity implements
         return true;
     }
 
-    public JSONArray getDataFromFile() {
+    public JSONArray getDataFromFile(String fileName) {
         try {
-            InputStream is = new FileInputStream(getCacheDir() + "/" + "bieres.json");
+            InputStream is = new FileInputStream(getCacheDir() + "/" + fileName);
             byte[] buffer = new byte[is.available()];
             is.read(buffer);
             is.close();
-            return new JSONArray(new String(buffer, "UTF-8")); //construction du tableau
+            JSONObject obj = new JSONObject(new String(buffer, "UTF-8"));
+            return obj.getJSONArray("results"); //construction du tableau
         } catch (IOException e) {
             e.printStackTrace();
             return new JSONArray();

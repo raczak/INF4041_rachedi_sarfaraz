@@ -11,14 +11,20 @@ import android.util.Log;
 import android.widget.Adapter;
 
 public class PetUpdate extends BroadcastReceiver {
-    public static final String BIERS_UPDATE = "com.rachedisarfaraz.project4a.BIERS_UPDATE";
+    public static final String PET_UPDATE = "com.rachedisarfaraz.project4a.PET_UPDATE";
     final NotificationManager mNotification;
     private final static int NOTIFICATION_ID = 001;
+    private OnRefreshListener tabListener;
+    private OnRefreshListener tab2Listener;
+    private OnRefreshListener tab3Listener;
     //private RecyclerView rc;
 
 
-    public PetUpdate(Context context) {
+    public PetUpdate(Context context, OnRefreshListener tabListener, OnRefreshListener tab2Listener, OnRefreshListener tab3Listener) {
         mNotification = (NotificationManager) context.getSystemService(context.NOTIFICATION_SERVICE);
+        this.tabListener = tabListener;
+        this.tab2Listener = tab2Listener;
+        this.tab3Listener = tab3Listener;
     }
 
     @Override
@@ -38,6 +44,10 @@ public class PetUpdate extends BroadcastReceiver {
                     // la notificaiton celon besoin
         );
 
+        tabListener.OnRefresh();
+        tab2Listener.OnRefresh();
+        tab3Listener.OnRefresh();
+
         NotificationCompat.Builder mBuilder =
                 (NotificationCompat.Builder) new NotificationCompat.Builder(context)
                         .setSmallIcon(R.drawable.ic_action_coffee)
@@ -49,7 +59,7 @@ public class PetUpdate extends BroadcastReceiver {
         //On execute la notification qu'après avoir charger le contenu du json
         mNotification.notify(NOTIFICATION_ID, mBuilder.build());
 
-        Log.d("OK Receiver", "Bieres Recu !");
+        Log.d("OK Receiver", "Pokemon Recu !");
 
     }
 }

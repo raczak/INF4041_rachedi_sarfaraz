@@ -6,21 +6,30 @@ import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 
+import com.rachedisarfaraz.project4a.MyIntentService;
 import com.rachedisarfaraz.project4a.R;
+import com.rachedisarfaraz.project4a.tabs.PetListFragment;
 
-public class FishFragment extends Fragment {
+import org.json.JSONArray;
+
+public class FishFragment extends PetListFragment {
+
+    JSONArray data;
 
     public FishFragment() {
-        // Required empty public constructor
+    }
+
+    public FishFragment(JSONArray data) {
+        this.data = data;
     }
 
     @Override
-    public void onCreate(Bundle savedInstanceState) {
-        super.onCreate(savedInstanceState);
+    public JSONArray getData() {
+        return data;
     }
 
     @Override
-    public View onCreateView(LayoutInflater inflater, ViewGroup container, Bundle savedInstanceState) {
-        return inflater.inflate(R.layout.fragment_tab3, container, false);
+    public void OnRefresh() {
+        //MyIntentService.startActionGetJson(getContext(), "http://pokeapi.co/api/v2/pokemon/?offset=100", "pokemon3.json");
     }
 }
