@@ -77,11 +77,11 @@ public class PetAdapter extends RecyclerView.Adapter<PetAdapter.ViewHolder> {
 
     public void setNewPet () {
 
-        this.pets = petUpdated;
+        //this.pets = petUpdated;
         notifyDataSetChanged();
     }
 
-    public JSONArray getDataFromFile(String fileName) {
+    /*public JSONArray getDataFromFile(String fileName) {
         try {
             InputStream is = new FileInputStream(getCacheDir() + "/" + fileName);
             byte[] buffer = new byte[is.available()];
@@ -96,6 +96,6 @@ public class PetAdapter extends RecyclerView.Adapter<PetAdapter.ViewHolder> {
             e.printStackTrace();
             return new JSONArray();
         }
-    }
+    }*/
 }
 

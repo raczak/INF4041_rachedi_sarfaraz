@@ -2,6 +2,7 @@ package com.rachedisarfaraz.project4a.tabs.fishList;
 
 import android.os.Bundle;
 import android.support.v4.app.Fragment;
+import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -25,6 +26,7 @@ public class FishFragment extends PetListFragment {
 
     @Override
     public JSONArray getData() {
+        Log.d("Fish Fragment", "getData");
         return data;
     }
 
