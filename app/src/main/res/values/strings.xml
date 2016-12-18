@@ -8,4 +8,9 @@
     <string name="button">Click</string>
     <string name="title_download_end">Téléchargement du fichier</string>
     <string name="content_download_end">Fin du téléchargement du fichier !</string>
+
+    <string name="toast_new">Vous avez cliqué sur new</string>
+    <string name="toast_edit">Vous avez cliqué sur edit</string>
+    <string name="toast_delete">Vous avez cliqué sur delete</string>
+
 </resources>

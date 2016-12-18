@@ -1,18 +1,11 @@
 package com.rachedisarfaraz.project4a;
 
-import android.content.IntentFilter;
-import android.support.v4.content.LocalBroadcastManager;
+import android.content.Intent;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
-import android.support.v7.widget.LinearLayoutManager;
 import android.support.v7.widget.RecyclerView;
-
-import org.json.JSONArray;
-import org.json.JSONException;
-
-import java.io.FileInputStream;
-import java.io.IOException;
-import java.io.InputStream;
+import android.view.Menu;
+import android.view.MenuItem;
 
 public class ListActivity extends AppCompatActivity {
 
@@ -23,24 +16,7 @@ public class ListActivity extends AppCompatActivity {
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        setContentView(R.layout.fragment_all_pet);
-
-        //IntentFilter intentFilter = new IntentFilter(PetUpdate.PET_UPDATE);
-        //LocalBroadcastManager.getInstance(this).registerReceiver(new PetUpdate(this), intentFilter);
-
-        //MyIntentService.startActionGetJson(this, "test", "tesst");
-
-        //The recyclerView
-       // mRecyclerView = (RecyclerView) findViewById(R.id.my_recycler_view);
-        //mRecyclerView.setHasFixedSize(true);
-
-        //The Layout Manager to handle the view
-        //mLayoutManager = new LinearLayoutManager(this);
-        //mRecyclerView.setLayoutManager(mLayoutManager);
-
-        //The adapter to handle data and bind it
-        //mAdapter = new PetAdapter(getBiersFromFile());
-        //mRecyclerView.setAdapter(mAdapter);
+        setContentView(R.layout.activity_list);
 
         /*getSupportFragmentManager()
                 .beginTransaction()
@@ -49,19 +25,23 @@ public class ListActivity extends AppCompatActivity {
         ;*/
     }
 
-    public JSONArray getBiersFromFile() {
-        try {
-            InputStream is = new FileInputStream(getCacheDir() + "/" + "bieres.json");
-            byte[] buffer = new byte[is.available()];
-            is.read(buffer);
-            is.close();
-            return new JSONArray(new String(buffer, "UTF-8")); //construction du tableau
-        } catch (IOException e) {
-            e.printStackTrace();
-            return new JSONArray();
-        } catch (JSONException e) {
-            e.printStackTrace();
-            return new JSONArray();
+    @Override
+    public boolean onCreateOptionsMenu(Menu menu) {
+        getMenuInflater().inflate(R.menu.actionbar_menu, menu);
+        return true;
+    }
+
+    @Override
+    public boolean onOptionsItemSelected(MenuItem item) {
+        switch (item.getItemId()) {
+            case R.id.action_new:
+                startActivity(new Intent(ListActivity.this, MainActivity.class));
+                return true;
+            case R.id.action_edit:
+                startActivity(new Intent(ListActivity.this, MainActivity.class));
+                return true;
+            default:
+                return super.onOptionsItemSelected(item);
         }
     }
 }

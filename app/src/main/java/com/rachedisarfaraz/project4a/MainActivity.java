@@ -1,6 +1,7 @@
 package com.rachedisarfaraz.project4a;
 
 import android.annotation.TargetApi;
+import android.content.Context;
 import android.content.Intent;
 import android.content.IntentFilter;
 import android.content.res.ColorStateList;
@@ -15,12 +16,14 @@ import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
 import android.support.v7.widget.Toolbar;
 import android.util.Log;
+import android.view.Gravity;
 import android.view.Menu;
 import android.view.MenuItem;
 import android.view.View;
 import android.view.Window;
 import android.view.WindowManager;
 import android.widget.TextView;
+import android.widget.Toast;
 
 import com.rachedisarfaraz.project4a.database.DAO.PetDAO;
 import com.rachedisarfaraz.project4a.database.models.Pet;
@@ -37,6 +40,8 @@ import java.io.FileInputStream;
 import java.io.IOException;
 import java.io.InputStream;
 import java.util.ArrayList;
+
+import static android.R.attr.id;
 
 public class MainActivity extends AppCompatActivity implements
         NavigationView.OnNavigationItemSelectedListener {
@@ -76,32 +81,9 @@ public class MainActivity extends AppCompatActivity implements
         toolbar = (Toolbar) findViewById(R.id.toolbar);
         setSupportActionBar(toolbar);
 
-        //TextView tv_hw = (TextView) findViewById(R.id.tv_hello_word);
-
         //Setup of Fab button
         fabButton = (FloatingActionButton) findViewById(R.id.fab);
         getSupportActionBar().setDisplayHomeAsUpEnabled(true);
-
-        //String now = DateUtils.formatDateTime(getApplicationContext(), (new Date()).getTime(), DateFormat.FULL);
-        //tv_hw.setText(now);
-
-        //Button nextAct = (Button) findViewById(R.id.btn_hello_world);
-
-        /*nextAct.setOnClickListener(new View.OnClickListener() {
-
-            @Override
-            public void onClick(View view) {
-                Toast.makeText(MainActivity.this, "Next activity", Toast.LENGTH_SHORT).show();
-                Intent nextAct =new Intent(MainActivity.this, ListActivity.class);
-                startActivity(nextAct);
-            }
-        }); */
-
-        //setup of the tabLayout
-
-        //ImageView imageView = (ImageView) findViewById(R.id.post_author_photo);
-        //Log.d(TAG, "poke Image : " + imageView);
-        //imageView.setImageResource(R.drawable.p002);
 
         viewPager = (ViewPager) findViewById(R.id.pager);
         setupViewPager(viewPager);
@@ -156,13 +138,6 @@ public class MainActivity extends AppCompatActivity implements
                 startActivity(new Intent(MainActivity.this, ListActivity.class));
             }
         });
-
-        //View hView =  navigationView.getHeaderView(0);
-        //ImageView menuUserIcon = (ImageView) hView.findViewById(R.id.imageView);
-
-        //ImageView menuUserIcon = (ImageView) findViewById(R.id.imageView);
-        //Glide.with(MainActivity.this).load(mPhotoUrl).into(menuUserIcon);
-        //Glide.with(this).load(loadUser.getmPhotoUrl()).into(menuUserIcon);
     }
 
     private void setupViewPager(ViewPager viewPager) {
@@ -176,7 +151,7 @@ public class MainActivity extends AppCompatActivity implements
     public boolean onCreateOptionsMenu(Menu menu){
         getMenuInflater().inflate(R.menu.menu_main, menu);
 
-        /*String hist = null;
+        String hist = null;
 
         switch(id) {
             case R.id.action_new :
@@ -194,7 +169,7 @@ public class MainActivity extends AppCompatActivity implements
         Context context = getApplicationContext();
         Toast msg = Toast.makeText(context, hist, Toast.LENGTH_LONG);
         msg.setGravity(Gravity.CENTER, msg.getXOffset() / 2, msg.getYOffset() / 2);
-        msg.show();*/
+        msg.show();
         
         return true;
     }

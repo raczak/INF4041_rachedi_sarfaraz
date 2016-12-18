@@ -5,14 +5,13 @@
     android:layout_height="match_parent"
     tools:context=".MainActivity">
 
-    <android.support.v7.widget.RecyclerView
-        android:id="@+id/my_recycler_view"
+
+    <TextView
+        android:text="Autre activité avec ActionBar"
         android:layout_width="match_parent"
         android:layout_height="match_parent"
-        android:layout_alignParentTop="true"
-        android:clipToPadding="false"
-        android:padding="5dp"
-        android:scrollbars="vertical"
-        tools:listitem="@layout/fragment_itemold" />
-
+        android:gravity="center_vertical|right"
+        android:id="@+id/textView2"
+        android:textAlignment="center"
+        android:textSize="36sp" />
 </FrameLayout>
