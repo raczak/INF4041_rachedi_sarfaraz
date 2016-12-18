@@ -44,9 +44,9 @@ public class PetUpdate extends BroadcastReceiver {
                     // la notificaiton celon besoin
         );
 
-        tabListener.OnRefresh();
+        /*tabListener.OnRefresh();
         tab2Listener.OnRefresh();
-        tab3Listener.OnRefresh();
+        tab3Listener.OnRefresh();*/
 
         NotificationCompat.Builder mBuilder =
                 (NotificationCompat.Builder) new NotificationCompat.Builder(context)
