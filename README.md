@@ -17,7 +17,10 @@ D'autres composants non demandés par le professeur mais très compliqués à im
 
 
 # Comment s'en servir ?
-Lancez l'application. Vous verrez alors un Launcher affichant le titre de l'application sur l'écran. Vous tomberez ensuite sur la page principale de l'application, composant de trois colonnes (gen1, gen2, gen3).
-Chaque colonne contiendra des Pokémons, chargés à partir d'un fichier JSON.
-A noter qu'au lancement de l'application, un toast apparaît au milieu de l'écran.
-Si vous souhaitez visualiser l'action bar, il suffit de cliquer sur le "+" en bas à droite de l'application. Ensuite, un clic sur les boutons du menu de l'actionbar vous fera retourner sur la page principale, avec un toast.
+1- Lancez l'application. <br/>
+2- Vous verrez alors un Launcher affichant le titre de l'application sur l'écran. <br/>
+3- Vous tomberez ensuite sur la page principale de l'application, composant de trois colonnes (gen1, gen2, gen3).<br/>
+4- Chaque colonne contiendra des Pokémons, chargés à partir d'un fichier JSON.<br/>
+5- A noter qu'au lancement de l'application, un toast apparaît au milieu de l'écran.<br/>
+6- Si vous souhaitez visualiser l'action bar, il suffit de cliquer sur le "+" en bas à droite de l'application. <br/>
+7- Ensuite, un clic sur les boutons du menu de l'actionbar vous fera retourner sur la page principale, avec un toast.
