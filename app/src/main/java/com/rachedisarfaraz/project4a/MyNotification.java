@@ -1,7 +1,10 @@
 package com.rachedisarfaraz.project4a;
 
 /**
- * Created by zakariarachedi on 08/11/2016.
+ * Class Name : MyNotification
+ * This class enables notifications
+ * Methods :
+ * -MyNotification: Constructor, set text and text2 variables
  */
 public class MyNotification {
     public String text;

@@ -19,6 +19,13 @@ import java.net.URL;
 
 import javax.net.ssl.HttpsURLConnection;
 
+/**
+ * Class Name : SplashActivity
+ * This class handles the launching screen in the app
+ * Methods :
+ * -onCreate: handle the launchng screen (duration, etc)
+ */
+
 public class SplashActivity extends Activity {
 
     /** Duration of wait **/

@@ -17,6 +17,14 @@ import java.io.FileInputStream;
 import java.io.IOException;
 import java.io.InputStream;
 
+/**
+ * Class Name : PetAdapter
+ * This class handles data inserted into views
+ * Methods :
+ * -onCreateViewHolder: create new view
+ * -onBindViewHolder: update view
+ */
+
 public class PetAdapter extends RecyclerView.Adapter<PetAdapter.ViewHolder> {
     private JSONArray pets;
 
@@ -80,22 +88,5 @@ public class PetAdapter extends RecyclerView.Adapter<PetAdapter.ViewHolder> {
         //this.pets = petUpdated;
         notifyDataSetChanged();
     }
-
-    /*public JSONArray getDataFromFile(String fileName) {
-        try {
-            InputStream is = new FileInputStream(getCacheDir() + "/" + fileName);
-            byte[] buffer = new byte[is.available()];
-            is.read(buffer);
-            is.close();
-            JSONObject obj = new JSONObject(new String(buffer, "UTF-8"));
-            return obj.getJSONArray("results"); //construction du tableau
-        } catch (IOException e) {
-            e.printStackTrace();
-            return new JSONArray();
-        } catch (JSONException e) {
-            e.printStackTrace();
-            return new JSONArray();
-        }
-    }*/
 }
 

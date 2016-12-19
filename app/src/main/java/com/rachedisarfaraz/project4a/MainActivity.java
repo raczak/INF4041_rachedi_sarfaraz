@@ -43,6 +43,16 @@ import java.util.ArrayList;
 
 import static android.R.attr.id;
 
+/**
+ * Class Name : MainActivity
+ * This class lists the different activites of the app
+ * Methods :
+ * -onCreate: set current view, load fragments, setup IntentService, buttons, colors
+ * -setupViewPager: set the views (fragment)
+ * -onCreateOptionsMenu: toasts setup for the menu
+ * -getDataFromFile: get Pokemons data from JSON file
+ */
+
 public class MainActivity extends AppCompatActivity implements
         NavigationView.OnNavigationItemSelectedListener {
     FloatingActionButton fabButton;

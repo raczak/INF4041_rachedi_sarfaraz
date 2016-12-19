@@ -10,6 +10,14 @@ import android.support.v7.widget.RecyclerView;
 import android.util.Log;
 import android.widget.Adapter;
 
+/**
+ * Class Name : PetUpdate
+ * This class update the data o the app
+ * Methods :
+ * -PetUpdate: Constructor, set notification and tab listener
+ * -onReceive: update the JSON file by downloading from the API
+ */
+
 public class PetUpdate extends BroadcastReceiver {
     public static final String PET_UPDATE = "com.rachedisarfaraz.project4a.PET_UPDATE";
     final NotificationManager mNotification;

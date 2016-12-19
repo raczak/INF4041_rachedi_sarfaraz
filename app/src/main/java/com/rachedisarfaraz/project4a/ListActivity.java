@@ -7,6 +7,15 @@ import android.support.v7.widget.RecyclerView;
 import android.view.Menu;
 import android.view.MenuItem;
 
+/**
+ * Class Name : ListActivity
+ * This class lists the different activites of the app
+ * Methods :
+ * -onCreate: set current view
+ * -onCreateOptionsMenu: set the action bar (inflation)
+ * -onOptionsItemSelected: start an activity by ID
+ */
+
 public class ListActivity extends AppCompatActivity {
 
     private RecyclerView mRecyclerView;
@@ -17,12 +26,6 @@ public class ListActivity extends AppCompatActivity {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_list);
-
-        /*getSupportFragmentManager()
-                .beginTransaction()
-                .replace(R.id.list, new BlankFragment())
-                .commit()
-        ;*/
     }
 
     @Override

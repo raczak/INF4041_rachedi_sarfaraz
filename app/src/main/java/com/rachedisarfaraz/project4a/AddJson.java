@@ -19,7 +19,11 @@ import java.net.URL;
 import javax.net.ssl.HttpsURLConnection;
 
 /**
- * Created by zakariarachedi on 18/12/2016.
+ * Class Name : AddJson
+ * This class gets the information from the API (PokeApi.co)
+ * Methods :
+ * -handleActionGetJson: get information from the API
+ * -copyInputStreamToFile: copy information to a file
  */
 
 public class AddJson extends AsyncTask<File, Void, String> {
