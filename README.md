@@ -1,15 +1,19 @@
 # INF4041_rachedi_sarfaraz - ESIEAdex
 Le Pokédex sur votre téléphone !
 # 
-Allumez votre téléphone pour lancer l'application ESIEAdex et bénéficier d'une liste de Pokémons. Chacun d'entre eux affichera plusieurs statitiques comme le PC, PV, le poids et bien d'autres !
-Ils sont classés par génération. L'application affiche 3 générations de Pokémons.
+Allumez votre téléphone pour lancer l'application <strong>ESIEAdex</strong> et bénéficier d'une liste de Pokémons. Chacun d'entre eux affichera plusieurs statitiques comme le PC, PV, le poids et bien d'autres !
+<br/>
+Ils sont classés par génération. L'application affiche 3 générations de Pokémons. 
+<br/>
+Chaque couleur des tab représente une génération précise de Pokémons (Version rouge Dracaufeu, Version bleu Tortank, Version jaune Pikachu)
 
 # Une application vivante
 Possédant un design propre aux applications Google, vous allez découvrir une application ergonomique et fluide.
 
 # Les composants techniques
-L'application est construite à l'aide des différents composants techniques attendus, c'est-à-dire, un RecyclerView, une action bar, l'IntentService, l'Asyncask, plusieurs activités ou encore un traitement de données JSON (via un fichier).
-D'autres composants non demandés par le professeur mais très compliqués à implémenter ont également été utilisés comme par exemple le TabLayout, ViewPager.
+L'application est construite à l'aide des différents composants techniques attendus, c'est-à-dire, un <strong>RecyclerView</strong>, une <strong>actionbar</strong>, <strong>l'IntentService</strong>, l'<strong>AsyncTask</strong>, plusieurs activités ou encore un traitement de données JSON (via un fichier).
+<br/>
+D'autres composants non demandés par le professeur mais très compliqués à implémenter ont également été utilisés comme par exemple le <strong>TabLayout</strong>, <strong>ViewPager</strong>.
 
 
 # Comment s'en servir ?
