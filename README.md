@@ -14,7 +14,8 @@ Possédant un design propre aux applications Google, vous allez découvrir une a
 L'application est construite à l'aide des différents composants techniques attendus, c'est-à-dire, un <strong>RecyclerView</strong>, une <strong>actionbar</strong>, plusieurs activités ou encore un traitement de données JSON (via un fichier).
 <br/><br/><br/>
 D'autres composants non demandés par le professeur mais très compliqués à implémenter ont également été utilisés comme par exemple le <strong>TabLayout</strong>, <strong>l'IntentService</strong>, l'<strong>AsyncTask</strong>, <strong>ViewPager</strong>.
-
+<br/>
+A noter que l'application intègre également un système de notification Android, qui peut s'afficher lors d'une mise à jour du fichier JSON depuis l'API.
 
 # Comment s'en servir ?
 1- Lancez l'application. <br/>
